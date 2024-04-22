@@ -2,7 +2,7 @@
 
 export default {
   components: {
-  
+    
   },
   data(){
   },
@@ -11,12 +11,12 @@ export default {
   mounted() {
   }
 };
+
 </script>
 
 <template>
 
-  <RouterView></RouterView>
-
+  ciao
 </template>
 
 <style lang="scss" scoped>
