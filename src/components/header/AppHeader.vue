@@ -5,13 +5,20 @@ export default {
 </script>
 
 <template>
-  <header class="d-flex align-items-center gap-3 p-2 px-5">
-    <h1 class="fs-2">App Header</h1>
+
+  <header>
+
   </header>
+
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/partials/mixins' as *;
 @use "../styles/partials/variables" as *;
+
+header{
+  background-color: $d-green;
+  height: 100px;
+}
 
 </style>
