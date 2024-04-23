@@ -15,7 +15,7 @@ export default {
 
 <template>
 
-    <div class="background">
+    <div class="d-white-bg">
 
         <div class="container">
 
@@ -58,7 +58,25 @@ export default {
 
     </div>
 
+    <div class="d-green-bg">
+        <div class="d-flex container justify-content-between ">
+        <div class="d-flex align-items-center">
+            <figure class="w-25">
+                <img class="img-fluid" src="../../img/lugano-health-logo-1.png" alt="">
+            </figure>
 
+            <div>
+                <h3 class="text-white">I MIGLIORI SPECIALISTI</h3>
+                <p class="text-white">Selezionati accuratamente <br>
+                    Tutti a portata di click, sul nostro sito
+                </p>
+            </div>
+        </div>
+
+        <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" href="">PRENOTA ORA UN
+          APPUNTAMENTO</a></div>
+        </div>
+    </div>
 
 </template>
 
@@ -67,22 +85,24 @@ export default {
 @use "../styles/partials/variables" as *;
 @use '../styles/general.scss';
 
-.background {
-    // background-color: $l-yellow;
-    background-color: $l-green;
+.container {
+    width: 80%;
+    padding: 2em;
 
-    .container {
-        width: 80%;
-        padding: 2em;
-
-        h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 2.6em;
-            color: $d-green;
-            text-align: center;
-        }
+    h2 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2.6em;
+        color: $d-green;
+        text-align: center;
     }
+}
+
+.d-green-bg{
+    @include d-green-bg;
+}
+.d-white-bg{
+    @include d-white-bg;
 }
 </style>
