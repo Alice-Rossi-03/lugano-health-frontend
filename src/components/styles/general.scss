@@ -1,7 +1,15 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 @import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
-figure{
+figure {
     margin: 0;
+}
+
+* {
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
 }
