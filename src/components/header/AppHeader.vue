@@ -17,11 +17,7 @@ export default {
 
   <header class="py-5">
 
-    <div id="top" class="d-flex justify-content-between mx-auto align-items-start">
-      <!-- logo statico -->
-      <figure>
-        <img src="../../img/lugano-health-logo-1.png" alt="">
-      </figure>
+    <div id="top" class="d-flex justify-content-end mx-auto align-items-start">
 
       <div class="d-flex gap-3">
         <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a>
@@ -30,9 +26,9 @@ export default {
     </div>
 
     <div class="d-flex flex-column align-items-center mt-4">
-      <div class="text-white">CONTATTA I MIGLIORI MEDICI CON</div>
-      <h1 id="title" class="my-2">LUGANO HEALTH</h1>
-      <div class="text-white">"La salute è la nostra priorità assoluta."</div>
+      <div class="text-white fs-3">CONTATTA I MIGLIORI MEDICI CON</div>
+      <h1 id="title" class="my-2 text-white">LUGANO HEALTH</h1>
+      <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
 
       <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" href="">PRENOTA ORA UN
           APPUNTAMENTO</a></div>
@@ -49,6 +45,9 @@ export default {
 
 header {
   background-color: $d-green;
+  background-image: url(../../img/lugano-health-logo-1.png);
+  background-position: -150px calc(100% + 200px);
+  background-repeat: no-repeat;
 
   #top {
     width: 80%;
@@ -72,11 +71,10 @@ header {
 
   .d-flex {
     #title {
-      color: $s-yellow;
       font-family: 'Bebas Neue', sans-serif;
       font-weight: 400;
       font-style: normal;
-      font-size: 5em;
+      font-size: 9em;
     }
 
     .button {
