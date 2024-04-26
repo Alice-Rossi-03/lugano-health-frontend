@@ -1,9 +1,13 @@
 <script>
 
 import { store } from '@/store';
+import SelectSpecialization from './SelectSpecialization.vue';
 
 export default {
     name: "AppMain01",
+    components:{
+        SelectSpecialization,
+    },
     data() {
         return {
             store
@@ -14,6 +18,8 @@ export default {
 </script>
 
 <template>
+
+    <SelectSpecialization/>
 
     <div class="d-white-bg">
 
