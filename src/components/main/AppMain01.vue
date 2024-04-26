@@ -19,12 +19,8 @@ export default {
 
 <template>
 
-<<<<<<< HEAD
     <SelectSpecialization/>
 
-=======
-<!-- HOW TO FIND DOCTORS -->
->>>>>>> origin/emanuele_branchfront
     <div class="d-white-bg">
         <div class="container">
 
