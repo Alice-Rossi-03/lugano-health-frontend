@@ -15,6 +15,47 @@ export default {
 
 <template>
 
+    <div class="d-white-bg">
+        <div class="container">
+            <h2 class="text-uppercase">le recensioni dei nostri pazienti</h2>
+
+            <div>
+
+                <!-- CARD DA CICLARE SUCCESSIVAMENTE -->
+                <div class="card pb-5 px-5">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Nome Cognome Paziente</h5>
+                        <figure class="" style="width: 100px;">
+                            <img class="img-fluid" src="../../img/userpicture.jpg" alt="">
+                        </figure>
+                    </div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil amet necessitatibus totam in accusantium? Hic, optio voluptate! Nam, quasi ad porro recusandae consectetur eaque magnam iusto distinctio. Quasi, alias deleniti.</p>
+                </div>
+
+                <!-- CARD DA CANCELLARE DOPO AVER CICLATO -->
+                <div class="card pb-5 px-5">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Nome Cognome Paziente</h5>
+                        <figure class="" style="width: 100px;">
+                            <img class="img-fluid" src="../../img/userpicture.jpg" alt="">
+                        </figure>
+                    </div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil amet necessitatibus totam in accusantium? Hic, optio voluptate! Nam, quasi ad porro recusandae consectetur eaque magnam iusto distinctio. Quasi, alias deleniti.</p>
+                </div>
+                <!-- CARD DA CANCELLARE DOPO AVER CICLATO -->
+                <div class="card pb-5 px-5">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Nome Cognome Paziente</h5>
+                        <figure class="" style="width: 100px;">
+                            <img class="img-fluid" src="../../img/userpicture.jpg" alt="">
+                        </figure>
+                    </div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil amet necessitatibus totam in accusantium? Hic, optio voluptate! Nam, quasi ad porro recusandae consectetur eaque magnam iusto distinctio. Quasi, alias deleniti.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
    
 </template>
 
@@ -23,21 +64,8 @@ export default {
 @use "../styles/partials/variables" as *;
 @use '../styles/general.scss';
 
-.container {
-    width: 80%;
-    padding: 2em;
 
-    h2 {
-        font-family: 'Bebas Neue', sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 2.6em;
-        color: $d-green;
-        text-align: center;
-    }
-}
-
-.d-white-bg{
-    @include d-white-bg;
+h2 {
+    color: $d-green;
 }
 </style>
