@@ -23,34 +23,37 @@ export default {
 <template>
 
 
-    <div class="card h-100">
+    <div class="card">
 
 
-        <div class="card-header">
-            <!-- <img class="card-img-top" :src="`${store.apiUrl}/storage/${propsElement.cover}`" alt="title"> -->
-            ciao
 
-        </div>
+        <img class="card-img-top" :src="`${store.apiUrlSpecialization}/storage/${propsElement.ProfilePic}`" alt="title">
 
-        <div class="card-body">
+
+        <div class="card-body text-capitalize">
 
             <!-- <h2><RouterLink :to="{name: 'single-project', params:{slug: propsElement.slug}}" class="card-title text-warning">{{ propsElement.title }}</RouterLink></h2> -->
 
-            <h6 class="text-secondary">{{ propsElement.name }}</h6>
+            <h4 class="text-secondary fw-bolder">Dott. {{ propsElement.name }} {{ propsElement.surname }}</h4>
 
-            <!-- <p class="card-text">{{ propsElement.description }}</p>
+            <div>
+                <div><span class="fw-bold">Indirizzo: </span>{{ propsElement.address }}</div>
+                <div><span class="fw-bold">Numero di telefono: </span>{{ propsElement.phone_number }}</div>
+            </div>
 
-    <div v-if="propsElement.technologies && propsElement.technologies.length">
+            <!-- <p class="card-text">{{ propsElement.performances }}</p> -->
 
-        <hr class="my-4">
+            <div v-if="propsElement.specializations && propsElement.specializations.length">
 
-        <h5>Technologies:</h5>
-        <ul>
-            <li v-for="(tech, index) in propsElement.technologies" :key="tech.id">
-                {{ tech.name }}
-            </li>
-        </ul>
-    </div> -->
+                <hr class="my-4">
+
+                <h5>Specializations:</h5>
+                <ul>
+                    <li v-for="(item, index) in propsElement.specializations" :key="item.id">
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </div>
@@ -58,4 +61,13 @@ export default {
 
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.card{
+    width: 20em;
+    min-height: 20rem;
+    max-height: 20rem;
+    overflow-y: scroll;
+}
+
+</style>

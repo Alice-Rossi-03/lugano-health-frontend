@@ -23,12 +23,12 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="bg-color">
 
         <div class="container">
-            <h2>Selected Doctors by specialization</h2>
+            <h2>Dottori Selezionati per {{ store.specializationValue }}</h2>
 
-            <div>
+            <div class="d-flex flex-wrap gap-2 justify-content-center container-flex">
                 <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
             </div>
 
@@ -39,4 +39,18 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../styles/partials/mixins' as *;
+@use "../styles/partials/variables" as *;
+@use '../styles/general.scss';
+
+
+.bg-color{
+    background: $d-white;
+    .container{
+
+    }
+}
+
+
+</style>
