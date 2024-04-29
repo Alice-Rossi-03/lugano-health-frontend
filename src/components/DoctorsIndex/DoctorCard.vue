@@ -23,18 +23,19 @@ export default {
 <template>
 
 
+<div>
     <div class="card">
 
 
 
-        <img class="card-img-top" :src="`${store.apiUrlSpecialization}/storage/${propsElement.ProfilePic}`" alt="title">
+        <!-- <img class="card-img-top" :src="`${store.apiUrlSpecialization}/storage/${propsElement.ProfilePic}`" alt="title"> -->
 
 
         <div class="card-body text-capitalize">
 
             <!-- <h2><RouterLink :to="{name: 'single-project', params:{slug: propsElement.slug}}" class="card-title text-warning">{{ propsElement.title }}</RouterLink></h2> -->
 
-            <h4 class="text-secondary fw-bolder">Dott. {{ propsElement.name }} {{ propsElement.surname }}</h4>
+            <h4 class="fw-bolder mb-3">Dott. {{ propsElement.name }} {{ propsElement.surname }}</h4>
 
             <div>
                 <div><span class="fw-bold">Indirizzo: </span>{{ propsElement.address }}</div>
@@ -57,17 +58,26 @@ export default {
 
         </div>
     </div>
-
+</div>
 
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/mixins' as *;
+@use "../styles/partials/variables" as *;
+@use '../styles/general.scss';
 
 .card{
     width: 20em;
     min-height: 20rem;
     max-height: 20rem;
-    overflow-y: scroll;
+    overflow-y: auto;
+
+    .card-body{
+        h4{
+            color: $d-green;
+        }
+    }
 }
 
 </style>
