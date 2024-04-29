@@ -28,11 +28,11 @@ export default {
 <template>
 
     <div class="d-white-bg">
-        <div class="container">
+        <div class="container d-flex justify-content-evenly ">
 
             <label for="selectSpecialization" class="form-label"></label>
 
-            <select name="selectSpecialization" id="selectSpecialization" class="form-select"
+            <select name="selectSpecialization" id="selectSpecialization" class="form-select w-75"
                 v-model="store.specializationValue">
                 <option :value="item.slug" v-for="(item, index) in store.specializationsArray" :key="item.id">{{
                     item.name }}</option>
