@@ -28,8 +28,12 @@ export default {
 
         },
         getDoctors() {
+
+            // console.log(store.specializationValue);
             if (store.specializationValue) {
+                
                 store.apiUrlSpecialization += `${store.specializationValue}`
+
                 axios.get(store.apiUrlSpecialization).then(response => {
                     store.filteredDoctors = response.data.doctors;
                     console.log(store.filteredDoctors)
