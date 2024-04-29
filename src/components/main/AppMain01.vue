@@ -62,6 +62,10 @@ export default {
 
 <template>
 
+    <div class="d-white-bg pt-4 text-center">
+        <h3>Cerca i migliori medici:</h3>
+    </div>
+
     <SelectSpecialization @performSearch="getDoctors" />
 
     <div class="d-white-bg">
@@ -136,7 +140,7 @@ export default {
 @use "../styles/partials/variables" as *;
 @use '../styles/general.scss';
 
-h2 {
+h2,h3 {
     color: $d-green;
 }
 </style>

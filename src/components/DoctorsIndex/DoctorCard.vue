@@ -46,9 +46,9 @@ export default {
 
             <div v-if="propsElement.specializations && propsElement.specializations.length">
 
-                <hr class="my-4">
+                <hr class="my-3">
 
-                <h5>Specializations:</h5>
+                <h5 class="mb-2">Specializations:</h5>
                 <ul>
                     <li v-for="(item, index) in propsElement.specializations" :key="item.id">
                         {{ item.name }}
