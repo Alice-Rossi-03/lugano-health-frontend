@@ -39,6 +39,8 @@ export default {
                     console.log(store.filteredDoctors)
                     console.log(store.specializationValue)
 
+                    window.localStorage.setItem("selectedSpecialization", store.specializationValue)
+
                     store.apiUrlSpecialization = 'http://127.0.0.1:8000/api/doctors/specialization/';
 
                 })
