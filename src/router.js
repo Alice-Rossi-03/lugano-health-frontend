@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import AppHome from '@/views/AppHome.vue'; 
+import AppHome from './views/AppHome.vue'; 
+import DoctorsIndex from './views/DoctorsIndex.vue'; 
 
 const router = createRouter({
     history: createWebHistory(),
@@ -9,6 +10,11 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: AppHome,
+        },
+        {
+            path: '/doctors',
+            name: 'getDoctors',
+            component: DoctorsIndex,
         },
         // {
         //     path: '/:patchMatch(.*)*',

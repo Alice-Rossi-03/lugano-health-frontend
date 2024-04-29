@@ -1,24 +1,51 @@
 <script>
 
 import { store } from '@/store';
+import { RouterLink } from 'vue-router';
+import axios from 'axios';
 
 export default {
     name: "SelectSpecialization",
     data() {
         return {
-            store
+            store,
         }
+    },
+    methods: {
+        
+
+       
+
+
+    },
+    mounted() {
+        // this.getSpecialization()
     }
 };
 
 </script>
 
 <template>
-   
-   <div>
 
-    
-   </div>
+    <div class="d-white-bg">
+        <div class="container">
+
+            <label for="selectSpecialization" class="form-label"></label>
+
+            <select name="selectSpecialization" id="selectSpecialization" class="form-select"
+                v-model="store.specializationValue">
+                <option :value="item.slug" v-for="(item, index) in store.specializationsArray" :key="item.id">{{
+                    item.name }}</option>
+            </select>
+
+
+
+            <RouterLink class="btn btn-outline-dark" :to="{ name: 'getDoctors' }">Get Doctors</RouterLink>
+
+
+        </div>
+    </div>
+
 </template>
 
 <style lang="scss" scoped>
@@ -40,7 +67,7 @@ export default {
     }
 }
 
-.d-white-bg{
+.d-white-bg {
     @include d-white-bg;
 }
 </style>
