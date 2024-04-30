@@ -19,7 +19,7 @@ export default {
 
     },
     mounted() {
-        // this.getSpecialization()
+        
     }
 };
 
@@ -28,19 +28,20 @@ export default {
 <template>
 
     <div class="d-white-bg">
-        <div class="container">
+        <div class="container d-flex justify-content-evenly ">
 
             <label for="selectSpecialization" class="form-label"></label>
 
-            <select name="selectSpecialization" id="selectSpecialization" class="form-select"
-                v-model="store.specializationValue">
+            <select name="selectSpecialization" id="selectSpecialization" class="form-select w-75"
+                v-model="store.specializationValue" >
+                <option value="" disabled>Seleziona una specializzazione...</option>
                 <option :value="item.slug" v-for="(item, index) in store.specializationsArray" :key="item.id">{{
                     item.name }}</option>
             </select>
 
 
 
-            <RouterLink class="btn btn-outline-dark" :to="{ name: 'getDoctors' }">Get Doctors</RouterLink>
+            <RouterLink class="btn btn-outline-dark" :to="{ name: 'getDoctors' }"  :class="store.specializationValue?'':'disabled'"  @click.prevent="$emit('performSearch')">Get Doctors</RouterLink>
 
 
         </div>
