@@ -39,6 +39,9 @@ export default {
 </script>
 
 <template>
+
+    <AppHeaderdue/>
+
     <div id="big-bg" class="p-5 d-green-bg">
 
         <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5">
@@ -47,7 +50,6 @@ export default {
                 <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg" alt="ProfilePicture">
             </figure>
 
-            <AppHeaderdue/>
     <div class="col-9">
                 <h1 class="mt-2 fw-bold">Dott. {{ doctor[0]?.name }}</h1>
                 <span class="badge bg-success me-1" v-for="(item, index) in doctor[0]?.specializations" :key="item.id">
