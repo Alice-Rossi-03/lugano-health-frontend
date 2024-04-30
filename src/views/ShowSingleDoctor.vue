@@ -1,11 +1,13 @@
 <script>
 import { store } from '@/store';
 import axios from 'axios';
+import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
+
 
 export default {
     name: 'ShowSingleDoctor',
     components: {
-
+        AppHeaderdue,
     },
     data() {
         return {
@@ -37,6 +39,7 @@ export default {
 </script>
 
 <template>
+    <AppHeaderdue/>
     <div class="container py-3 text-capitalize">
 
         <h1 class="mt-2 fw-bold">Dott. {{ doctor[0]?.name }}</h1>
