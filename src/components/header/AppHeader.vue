@@ -20,7 +20,7 @@ export default {
     <div id="top" class="d-flex justify-content-end mx-auto align-items-start">
 
       <div class="d-flex gap-3">
-        <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a>
+        
         <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
       </div>
     </div>
@@ -30,8 +30,7 @@ export default {
       <h1 id="title" class="my-2 text-white">LUGANO HEALTH</h1>
       <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
 
-      <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" href="">PRENOTA ORA UN
-          APPUNTAMENTO</a></div>
+      <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div>
     </div>
 
   </header>
