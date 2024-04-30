@@ -32,7 +32,7 @@ export default {
 
 
 
-            <img class="card-img-top" :src="`${store.apiUrlSpecialization}/storage/${propsElement.ProfilePic}`" alt="title">
+            <img class="card-img-top rounded rounded-circle w-50 m-auto" :src="`${store.apiBase}storage/${propsElement.ProfilePic}`" alt="title">
 
 
             <div class="card-body text-capitalize">
@@ -97,5 +97,6 @@ export default {
             color: $d-green;
         }
     }
+
 }
 </style>

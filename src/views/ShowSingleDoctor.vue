@@ -1,11 +1,13 @@
 <script>
 import { store } from '@/store';
 import axios from 'axios';
+import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
+
 
 export default {
     name: 'ShowSingleDoctor',
     components: {
-
+        AppHeaderdue,
     },
     data() {
         return {
@@ -45,7 +47,8 @@ export default {
                 <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg" alt="ProfilePicture">
             </figure>
 
-            <div class="col-9">
+            <AppHeaderdue/>
+    <div class="col-9">
                 <h1 class="mt-2 fw-bold">Dott. {{ doctor[0]?.name }}</h1>
                 <span class="badge bg-success me-1" v-for="(item, index) in doctor[0]?.specializations" :key="item.id">
                 {{ item.name }}
