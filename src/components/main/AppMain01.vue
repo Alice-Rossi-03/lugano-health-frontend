@@ -28,12 +28,18 @@ export default {
 
         },
         getDoctors() {
+
+            // console.log(store.specializationValue);
             if (store.specializationValue) {
+                
                 store.apiUrlSpecialization += `${store.specializationValue}`
+
                 axios.get(store.apiUrlSpecialization).then(response => {
                     store.filteredDoctors = response.data.doctors;
                     console.log(store.filteredDoctors)
                     console.log(store.specializationValue)
+
+                    window.localStorage.setItem("selectedSpecialization", store.specializationValue)
 
                     store.apiUrlSpecialization = 'http://127.0.0.1:8000/api/doctors/specialization/';
 
@@ -61,6 +67,10 @@ export default {
 </script>
 
 <template>
+
+    <div class="d-white-bg pt-4 text-center">
+        <h3>Cerca i migliori medici:</h3>
+    </div>
 
     <SelectSpecialization @performSearch="getDoctors" />
 
@@ -136,7 +146,7 @@ export default {
 @use "../styles/partials/variables" as *;
 @use '../styles/general.scss';
 
-h2 {
+h2,h3 {
     color: $d-green;
 }
 </style>

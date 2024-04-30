@@ -1,5 +1,6 @@
 <script>
 import { store } from '@/store';
+import { RouterLink } from 'vue-router';
 
 export default {
     name: 'DoctorCard',
@@ -23,39 +24,78 @@ export default {
 <template>
 
 
-    <div class="card h-100">
+    <div>
+
+       
+        <RouterLink class="card pointer-event text-decoration-none" :to="{ name: 'single-doctor', params:{slug: propsElement.slug }}">
+            <!-- <RouterLink class="card pointer-event text-decoration-none" :to="{ name: 'single-doctor'}"> -->
 
 
-        <div class="card-header">
-            <!-- <img class="card-img-top" :src="`${store.apiUrl}/storage/${propsElement.cover}`" alt="title"> -->
-            ciao
 
-        </div>
+            <img class="card-img-top" :src="`${store.apiUrlSpecialization}/storage/${propsElement.ProfilePic}`" alt="title">
 
-        <div class="card-body">
 
-            <!-- <h2><RouterLink :to="{name: 'single-project', params:{slug: propsElement.slug}}" class="card-title text-warning">{{ propsElement.title }}</RouterLink></h2> -->
+            <div class="card-body text-capitalize">
 
-            <h6 class="text-secondary">{{ propsElement.name }}</h6>
+                <!-- <h2><RouterLink :to="{name: 'single-project', params:{slug: propsElement.slug}}" class="card-title text-warning">{{ propsElement.title }}</RouterLink></h2> -->
 
-            <!-- <p class="card-text">{{ propsElement.description }}</p>
+                <h4 class="fw-bolder mb-3">Dott. {{ propsElement.name }} {{ propsElement.surname }}</h4>
 
-    <div v-if="propsElement.technologies && propsElement.technologies.length">
+                <div>
+                    <div><span class="fw-bold">Indirizzo: </span>{{ propsElement.address }}</div>
+                    <div><span class="fw-bold">Numero di telefono: </span>{{ propsElement.phone_number }}</div>
+                </div>
 
-        <hr class="my-4">
 
-        <h5>Technologies:</h5>
-        <ul>
-            <li v-for="(tech, index) in propsElement.technologies" :key="tech.id">
-                {{ tech.name }}
-            </li>
-        </ul>
-    </div> -->
+                <div v-if="propsElement.specializations && propsElement.specializations.length">
 
-        </div>
+
+                    <div v-show="propsElement.performances">
+
+                        <hr class="my-3">
+
+                        <h5 class="mb-2">Prestazioni:</h5>
+
+                        <p class="card-text">{{ propsElement.performances }}</p>
+                    </div>
+
+
+                    <hr class="my-3">
+
+                    <h5 class="mb-2">Specializzazioni:</h5>
+
+                    <span class="badge bg-success me-1" v-for="(item, index) in propsElement.specializations"
+                        :key="item.id">
+                        {{ item.name }}
+                    </span>
+
+                </div>
+
+            </div>
+        </RouterLink>
     </div>
-
 
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../styles/partials/mixins' as *;
+@use "../styles/partials/variables" as *;
+@use '../styles/general.scss';
+
+.card {
+    width: 20em;
+    min-height: 20rem;
+    max-height: 20rem;
+    overflow-y: auto;
+
+    &:hover{
+        border: 4px solid $l-green;
+    }
+
+    .card-body {
+        h4 {
+            color: $d-green;
+        }
+    }
+}
+</style>
