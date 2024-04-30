@@ -10,13 +10,17 @@ export default {
     },
     data() {
         return {
-            store
+            store,
+            selectedSpec: ""
         }
     },
     methods: {
         
     },
     mounted() {
+
+        this.selectedSpec = window.localStorage.getItem("selectedSpecialization");
+
     }
 };
 
@@ -26,7 +30,7 @@ export default {
     <div class="bg-color">
 
         <div class="container">
-            <h2>Dottori Selezionati per {{ store.specializationValue }}</h2>
+            <h2 class="mb-4">Dottori Selezionati per {{ store.specializationValue?store.specializationValue:selectedSpec }}</h2>
 
             <div class="d-flex flex-wrap gap-2 justify-content-center container-flex">
                 <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
@@ -48,6 +52,11 @@ export default {
 .bg-color{
     background: $d-white;
     .container{
+
+        h2{
+            color: $d-green;
+            font-size: 3em;
+        }
 
     }
 }
