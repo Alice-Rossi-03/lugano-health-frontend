@@ -41,7 +41,7 @@ export default {
 
 
 
-            <RouterLink class="btn btn-outline-dark" :to="{ name: 'getDoctors' }"  :class="store.specializationValue?'':'disabled'"  @click.prevent="$emit('performSearch')">Get Doctors</RouterLink>
+            <RouterLink class="btn btn-outline-dark" :to="{ name: 'getDoctors' }"  :class="store.specializationValue?'':'disabled'"  @click.prevent="$emit('performSearch')">Trova dottori</RouterLink>
 
 
         </div>

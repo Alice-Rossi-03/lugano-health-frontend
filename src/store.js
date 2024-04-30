@@ -7,6 +7,7 @@ export const store = reactive({
     apiUrlSpecialization: 'http://127.0.0.1:8000/api/doctors/specialization/',
     specializationsArray:[],
     specializationValue: '',
-    filteredDoctors:[]
+    filteredDoctors:[],
+    apiBase: 'http://127.0.0.1:8000/',
 })
 

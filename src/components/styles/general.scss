@@ -18,6 +18,15 @@ h5{
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
+
+    /* scrollbar disappear*/
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar {
+    display: none;
 }
 
 .container {
