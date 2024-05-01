@@ -2,11 +2,14 @@
 import { store } from '@/store';
 
 import DoctorCard from './DoctorCard.vue';
+import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
+
 
 
 export default {
     components: {
-        DoctorCard
+        DoctorCard,
+        AppHeaderdue
     },
     data() {
         return {
@@ -27,6 +30,7 @@ export default {
 </script>
 
 <template>
+    <AppHeaderdue/>
     <div class="bg-color">
 
         <div class="container">
