@@ -42,7 +42,7 @@ export default {
 
     <AppHeaderdue/>
 
-    <div id="big-bg" class="p-5 d-green-bg">
+    <div id="big-bg" class="px-5 pb-5 pt-1 d-green-bg">
 
         <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5">
 
