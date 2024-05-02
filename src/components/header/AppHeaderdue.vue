@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <header class="py-5">
+  <header class="px-5 pt-5">
     <div id="top" class="d-flex justify-content-between mx-auto align-items-start">
       <div>
         <a class="lugano-health" href="#">Lugano Health</a>
