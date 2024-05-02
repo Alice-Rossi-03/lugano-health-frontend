@@ -42,11 +42,12 @@ export default {
 
     <AppHeaderdue/>
 
+    
     <div id="big-bg" class="px-5 pb-5 pt-1 d-green-bg">
 
         <hr>
 
-        <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5" style="height: 416px">
+        <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
 
             <figure class="col-3 d-flex align-items-center justify-content-center ">
                 <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg" alt="ProfilePicture">
@@ -90,7 +91,8 @@ export default {
                         <!-- OPINION TEXT AREA -->
                         <div class="collapse collapse-horizontal" id="collapseReview">
                             <div class="">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px"></textarea>
+                                <input type="text" class="form-label border border-success rounded-2" placeholder="Il tuo nome">
+                                <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione" id="floatingTextarea" style="height: 100px"></textarea>
                                 <button class="btn btn-success mt-2" type="button">
                                     INVIA RECENSIONE
                                 </button>
@@ -100,7 +102,11 @@ export default {
                         <!-- MESSAGE TEXT AREA -->
                         <div class="collapse collapse-horizontal mt-4" id="collapseMessage">
                             <div class="">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px"></textarea>
+                                <div class="d-flex justify-content-between">
+                                    <input type="text" class="form-label border border-success rounded-2" placeholder="Il tuo nome">
+                                    <input type="email" class="form-label border border-success rounded-2" id="exampleFormControlInput1" placeholder="esempio@tuaMail.com">
+                                </div>
+                                <textarea class="form-control border border-success" placeholder="Scrivi un messaggio per il medico" id="floatingTextarea" style="height: 100px"></textarea>
                                 <button class="btn btn-success mt-2" type="button">
                                     INVIA MESSAGGIO
                                 </button>
