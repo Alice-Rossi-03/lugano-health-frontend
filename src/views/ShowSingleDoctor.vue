@@ -67,7 +67,7 @@ export default {
                 </div>
 
                 <!-- SEND MESSAGES & BOOK -->
-                <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" href="">PRENOTA ORA UN APPUNTAMENTO</a></div>
+                <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" href="">INVIA RECENSIONE</a></div>
                 <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" href="">INVIA MESSAGGIO</a></div>
             </div>
         </div>
