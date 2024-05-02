@@ -22,7 +22,6 @@ export default {
       <div class="d-flex gap-3">
         <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a>
         <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
-        <RouterLink class="btn btn-outline-dark" :to="{ name: 'payment' }">Test Pagamento</RouterLink>
       </div>
     </div>
 
