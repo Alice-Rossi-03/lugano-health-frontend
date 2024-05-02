@@ -27,7 +27,7 @@ export default {
 
     <div class="d-flex flex-column align-items-center mt-4">
       <div class="text-white fs-3">CONTATTA I MIGLIORI MEDICI CON</div>
-      <h1 id="title" class="my-2 text-white">LUGANO HEALTH</h1>
+      <h1 id="title" class="my-2 s-yellow-color">LUGANO HEALTH</h1>
       <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
 
       <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div>
