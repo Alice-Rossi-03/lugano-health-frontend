@@ -36,7 +36,7 @@ export default {
 
         <hr>
 
-        <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
+        <div class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
             
             <h2 class="mb-4">Dottori Selezionati per {{ store.specializationValue?store.specializationValue:selectedSpec }}</h2>
         

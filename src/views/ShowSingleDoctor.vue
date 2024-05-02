@@ -47,7 +47,7 @@ export default {
 
         <hr>
 
-        <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
+        <div class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
 
             <figure class="col-3 d-flex align-items-center justify-content-center ">
                 <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg" alt="ProfilePicture">
