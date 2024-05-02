@@ -114,7 +114,7 @@ export default {
         </div>
     </div>
 
-    <!-- BEST DOCTORS & BOOK -->
+    <!-- BEST DOCTORS -->
     <div class="d-green-bg">
         <div class="d-flex container justify-content-between align-items-center">
             <div class="d-flex align-items-center">
@@ -130,11 +130,6 @@ export default {
                         Tutti a portata di click, sul nostro sito
                     </p>
                 </div>
-            </div>
-
-            <div class="button">
-                <a class="bg-white px-3 rounded-2 btn pointer-event" href="">PRENOTA ORA UN
-                    APPUNTAMENTO</a>
             </div>
         </div>
     </div>

@@ -27,14 +27,14 @@ export default {
     <div>
 
        
-        <RouterLink class="card pointer-event text-decoration-none" :to="{ name: 'single-doctor', params:{slug: propsElement.slug }}">
+        <RouterLink class="card border border-success text-decoration-none" :to="{ name: 'single-doctor', params:{slug: propsElement.slug }}">
             <!-- <RouterLink class="card pointer-event text-decoration-none" :to="{ name: 'single-doctor'}"> -->
 
             <div class="card-body text-capitalize row">
 
                 <div class="col-6">
                     
-                    <figure class="col-3 d-flex align-items-center justify-content-center w-75">
+                    <figure class="col-3 d-flex align-items-center justify-content-center w-75 mb-2">
                         <img class="img-fluid img-thumbnail rounded rounded-circle w-100" src="../../img/userpicture.jpg" alt="ProfilePicture">
                     </figure>
 
