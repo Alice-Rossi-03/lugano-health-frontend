@@ -48,3 +48,6 @@ h2 {
 .d-green-bg{
     @include d-green-bg;
 }
+.s-yellow-color{
+    color: $s-yellow;
+}

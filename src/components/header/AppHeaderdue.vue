@@ -12,11 +12,9 @@ export default {
 </script>
 
 <template>
-  <header class="px-5 pt-5">
-    <div id="top" class="d-flex justify-content-between mx-auto align-items-start">
-      <div>
+  <header class="px-5 py-4">
+    <div id="top" class="d-flex justify-content-between mx-auto align-items-center">
         <a class="lugano-health" href="#">Lugano Health</a>
-      </div>
       <div class="d-flex gap-3">
         <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a>
         <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
