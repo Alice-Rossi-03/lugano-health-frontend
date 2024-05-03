@@ -18,7 +18,7 @@ export default {
         }
     },
     methods: {
-        
+
     },
     mounted() {
 
@@ -30,24 +30,63 @@ export default {
 </script>
 
 <template>
-    <AppHeaderdue/>
-    
-    <div id="big-bg" class="px-5 pb-5 pt-1 d-green-bg">
+    <AppHeaderdue />
 
-        <hr>
+    <div id="big-bg" class="px-5 pb-5 pt-0 d-green-bg">
 
-        <div class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
-            
-            <h2 class="mb-4">Dottori Selezionati per {{ store.specializationValue?store.specializationValue:selectedSpec }}</h2>
-        
-            <div class="d-flex flex-wrap gap-2 justify-content-center container-flex">
-                <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
+        <hr class="my-0">
+
+        <div class="row align-items-end gap-2 my-4">
+
+            <div class="col-3">
+                <select name="voteSelect" id="voteSelect" class="form-select">
+                    <option value="" disabled selected>Filtra per voto...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
+            <div class="col-3">
+                <select name="reviewSelect" id="reviewSelect" class="form-select">
+                    <option value="" disabled selected>Filtra per recensioni...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+            <div class="col-2">
+                <button class="ms-3 h-100 btn btn-outline-light text-uppercase">Filtra</button>
+            </div>
+
         </div>
 
-        <div class="d-flex justify-content-center mt-5 gap-3 ">
+
+        <div class="row mt-0 d-white-bg rounded-4 p-4" style="height: 480px; width: auto;">
+
+            <h2 class="mb-2">Dottori Selezionati per {{ store.specializationValue ? store.specializationValue :
+                selectedSpec
+                }}</h2>
+
+            <div class="row">
+
+
+
+                <div class="col-9 d-flex flex-wrap gap-2 justify-content-center container-flex">
+                    <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center mt-5 gap-3 ">
             <h3>LA TUA SALUTE CONTA, AFFIDALA A MANI ESPERTE</h3>
-            <svg height="35px" width="35px" fill="gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1V192c0 53 43 96 96 96s96-43 96-96V71.1l-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1V192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112V265.3c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V336c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192V71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/></svg>
+            <svg height="35px" width="35px" fill="gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path
+                    d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1V192c0 53 43 96 96 96s96-43 96-96V71.1l-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1V192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112V265.3c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V336c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192V71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+            </svg>
         </div>
     </div>
 
@@ -59,24 +98,23 @@ export default {
 @use '../styles/general.scss';
 
 
-#big-bg{
+#big-bg {
     background-image: url(../img/lugano-health-logo-1.png);
     background-position: -150px calc(100% + 200px);
     background-repeat: no-repeat;
 
-    hr{
+    hr {
         color: $s-yellow;
         opacity: 1;
+        margin: 0;
     }
 
-    h2{
+    h2 {
         color: $d-green;
     }
 
-    h3{
+    h3 {
         color: $s-yellow;
     }
 }
-
-
 </style>
