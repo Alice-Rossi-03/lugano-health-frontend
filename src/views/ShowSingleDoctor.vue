@@ -19,7 +19,7 @@ export default {
             email: '',
             message: '',
             success: false,
-            errors:{},
+            errors: {},
             loading: false
         }
     },
@@ -36,14 +36,14 @@ export default {
             })
         },
         setRating(rating) {
-        this.rating = rating;
-    },
-        sendMessage(){
+            this.rating = rating;
+        },
+        sendMessage() {
             const data = {
                 doctor_id: this.doctor[0]?.id,
                 name: this.name,
                 email: this.email,
-                message:this.message
+                message: this.message
             }
 
             this.errors = {};
@@ -53,9 +53,9 @@ export default {
 
                 this.success = res.data.success
 
-                if( !this.success ){
+                if (!this.success) {
                     this.errors = res.data.errors
-                }else{
+                } else {
                     this.name = ''
                     this.email = ''
                     this.message = ''
@@ -64,9 +64,9 @@ export default {
                     }, 3000);
                 }
             })
-            .finally(() => {
-                this.loading = false; // Imposta lo stato di caricamento su false dopo che l'operazione è completata (indipendentemente dall'esito)
-            });
+                .finally(() => {
+                    this.loading = false; // Imposta lo stato di caricamento su false dopo che l'operazione è completata (indipendentemente dall'esito)
+                });
         }
 
     },
@@ -145,23 +145,35 @@ export default {
                         </div>
                     </div>
 
-                        <!-- MESSAGE TEXT AREA -->
-                        <div class="collapse collapse-horizontal mt-4" id="collapseMessage">
-                            <div class="">
-                                <form @submit.prevent="sendMessage()">
-                                    <div class="d-flex justify-content-between">
-                                        <input type="text" class="form-label border border-success rounded-2" placeholder="Il tuo nome" v-model="name" required>
-                                        <input type="email" class="form-label border border-success rounded-2" id="exampleFormControlInput1" placeholder="esempio@tuaMail.com" v-model="email" required>
-                                    </div>
-                                    <textarea class="form-control border border-success" placeholder="Scrivi un messaggio per il medico" id="floatingTextarea" style="height: 100px" v-model="message" required></textarea>
-                                    <button class="btn btn-success mt-2" type="submit">
-                                        INVIA MESSAGGIO
-                                    </button>
-                                </form>
-                            </div>
+                    <!-- MESSAGE TEXT AREA -->
+                    <div class="collapse collapse-horizontal mt-4" id="collapseMessage">
+                        <div class="">
+                            <form @submit.prevent="sendMessage()">
+                                <div class="d-flex justify-content-between">
+                                    <input type="text" class="form-label border border-success rounded-2"
+                                        placeholder="Il tuo nome" v-model="name" required>
+                                    <input type="email" class="form-label border border-success rounded-2"
+                                        id="exampleFormControlInput1" placeholder="esempio@tuaMail.com" v-model="email"
+                                        required>
+                                </div>
+                                <textarea class="form-control border border-success"
+                                    placeholder="Scrivi un messaggio per il medico" id="floatingTextarea"
+                                    style="height: 100px" v-model="message" required></textarea>
+                                <button class="btn btn-success mt-2" type="submit">
+                                    INVIA MESSAGGIO
+                                </button>
+                            </form>
                         </div>
+                    </div>
 
+                    <div v-if="loading" class="loading-overlay">
+                        <div class="spinner"></div>
+                        <p>Caricamento in corso...</p>
+                    </div>
 
+                    <div id="success-message" v-if="success" class="alert alert-success mt-3" role="alert">
+                        Messaggio inviato con successo!
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,6 +241,4 @@ h4 {
         transform: rotate(360deg);
     }
 }
-
-
 </style>
