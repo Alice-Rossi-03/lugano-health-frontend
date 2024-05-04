@@ -3,13 +3,15 @@ import { store } from '@/store';
 
 import DoctorCard from './DoctorCard.vue';
 import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
-
+import axios from 'axios';
+import SpecificSearch from './SpecificSearch.vue';
 
 
 export default {
     components: {
         DoctorCard,
-        AppHeaderdue
+        AppHeaderdue,
+        SpecificSearch
     },
     data() {
         return {
@@ -18,12 +20,35 @@ export default {
         }
     },
     methods: {
+        getVotes() {
+            axios.get(`${store.apiUrl}`).then(response => {
+                store.votesArray = response.data.votes;
+                console.log(store.votesArray);
+            });
+        },
+        filterDoctorsByVoteAndReview() {
 
+            if (store.voteValue) {
+                store.filteredDoctors = store.doctorsArray.filter(doctor => {
+                    return doctor.vote === store.voteValue;
+                });
+            }
+
+            if (store.reviewNumberValue) {
+                store.filteredDoctors = store.filteredDoctors.filter(doctor => {
+                    return doctor.reviews.length >= store.reviewNumberValue;
+                });
+            }
+        },
+        updateSelectedVote(vote) {
+            store.voteValue = vote;
+            this.filterDoctorsByVoteAndReview();
+        },
     },
     mounted() {
 
         this.selectedSpec = window.localStorage.getItem("selectedSpecialization");
-
+        this.getVotes()
     }
 };
 
@@ -36,41 +61,20 @@ export default {
 
         <hr class="my-0">
 
-        <div class="row align-items-end gap-2 my-4">
-
-            <div class="col-3">
-                <select name="voteSelect" id="voteSelect" class="form-select">
-                    <option value="" disabled selected>Filtra per voto...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="col-3">
-                <select name="reviewSelect" id="reviewSelect" class="form-select">
-                    <option value="" disabled selected>Filtra per recensioni...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-
-            <div class="col-2">
-                <button class="ms-3 h-100 btn btn-outline-light text-uppercase">Filtra</button>
-            </div>
-
-        </div>
+        <SpecificSearch />
 
 
         <div class="row mt-0 d-white-bg rounded-4 p-4" style="height: 480px; width: auto;">
 
-            <h2 class="mb-2">Dottori Selezionati per {{ store.specializationValue ? store.specializationValue :
-                selectedSpec
-                }}</h2>
+            <div class="text-center">
+                <h2 class="mb-2">Dottori Selezionati per {{ store.specializationValue ? store.specializationValue :
+                    selectedSpec
+                    }}</h2>
+                <h4 class="fs-6">Risultati: {{ store.filteredDoctors.length }}</h4>
+
+            </div>
 
             <div class="row">
-
-
 
                 <div class="col-9 d-flex flex-wrap gap-2 justify-content-center container-flex">
                     <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
