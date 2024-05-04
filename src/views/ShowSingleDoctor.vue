@@ -15,9 +15,14 @@ export default {
             doctor: [],
             rating: 0,
             hoverRating: 0,
-            name: '',
-            email: '',
-            message: '',
+
+            name: '', //Messaggi
+            email: '', //Messaggi
+            message: '', //Messaggi
+
+            user_name: '', //Reviews
+            comment: '', //Reviews
+
             success: false,
             errors: {},
             loading: false
@@ -60,13 +65,41 @@ export default {
                     this.email = ''
                     this.message = ''
                     setTimeout(() => {
-                        this.success = false; // Nascondi il messaggio di successo dopo 3 secondi
+                        this.success = false; 
                     }, 3000);
                 }
             })
                 .finally(() => {
-                    this.loading = false; // Imposta lo stato di caricamento su false dopo che l'operazione è completata (indipendentemente dall'esito)
+                    this.loading = false; 
                 });
+        },
+        submitReview(){
+            const reviewData = {
+                doctor_id: this.doctor[0]?.id,
+                user_name: this.user_name,
+                comment: this.comment
+            }
+
+            this.errors = {};
+            this.loading = true;
+
+            axios.post('http://127.0.0.1:8000/api/reviews', reviewData).then(res => {
+
+                this.success = res.data.success
+
+                if(!this.success){
+                    this.errors = res.data.errors
+                }else{
+                    this.user_name = ''
+                    this.comment = ''
+                    setTimeout(() => {
+                        this.success = false; 
+                    }, 3000);
+                }
+            })
+            .finally(() => {
+                this.loading = false; 
+            });
         }
 
     },
@@ -134,15 +167,17 @@ export default {
 
                     <!-- OPINION TEXT AREA -->
                     <div class="collapse collapse-horizontal" id="collapseReview">
-                        <div class="">
-                            <input type="text" class="form-label border border-success rounded-2"
-                                placeholder="Il tuo nome">
-                            <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione"
-                                id="floatingTextarea" style="height: 100px"></textarea>
-                            <button class="btn btn-success mt-2" type="button">
-                                INVIA RECENSIONE
-                            </button>
-                        </div>
+                        <form @submit.prevent="submitReview()">
+                            <div class="">
+                                <input type="text" class="form-label border border-success rounded-2"
+                                    placeholder="Il tuo nome" v-model="user_name">
+                                <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione"
+                                    id="floatingTextarea" style="height: 100px" v-model="comment"></textarea>
+                                <button class="btn btn-success mt-2" type="submit" >
+                                    INVIA RECENSIONE
+                                </button>
+                            </div>
+                        </form>
                     </div>
 
                     <!-- MESSAGE TEXT AREA -->
