@@ -27,7 +27,7 @@ export default {
 
 <template>
 
-    <div class="d-white-bg">
+    <div class="">
         <div class="container d-flex justify-content-evenly ">
 
             <label for="selectSpecialization" class="form-label"></label>
@@ -41,7 +41,7 @@ export default {
 
 
 
-            <RouterLink class="btn btn-outline-dark" :to="{ name: 'getDoctors' }"  :class="store.specializationValue?'':'disabled'"  @click.prevent="$emit('performSearch')">Trova dottori</RouterLink>
+            <RouterLink class="btn btn-light" :to="{ name: 'getDoctors' }"  :class="store.specializationValue?'':'disabled'"  @click.prevent="$emit('performSearch')">Trova dottori</RouterLink>
 
 
         </div>
