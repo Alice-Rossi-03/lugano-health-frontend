@@ -153,12 +153,6 @@ export default {
                                     </button>
                                 </form>
                             </div>
-                            <textarea class="form-control border border-success"
-                                placeholder="Scrivi un messaggio per il medico" id="floatingTextarea"
-                                style="height: 100px"></textarea>
-                            <button class="btn btn-success mt-2" type="button">
-                                INVIA MESSAGGIO
-                            </button>
                         </div>
                     </div>
 
@@ -166,7 +160,7 @@ export default {
                 </div>
             </div>
         </div>
-    </div>
+    
 
     <div class="p-5 d-white-bg row">
         <div class="col-6 px-5">
