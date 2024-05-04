@@ -18,7 +18,8 @@ export default {
             email: '',
             message: '',
             success: false,
-            errors:{}
+            errors:{},
+            loading: false
         }
     },
     methods: {
@@ -42,7 +43,7 @@ export default {
             }
 
             this.errors = {};
-            console.log(this.doctor[0]?.id);
+            this.loading = true;
 
             axios.post('http://127.0.0.1:8000/api/messages', data).then(res => {
 
@@ -54,9 +55,14 @@ export default {
                     this.name = ''
                     this.email = ''
                     this.message = ''
+                    setTimeout(() => {
+                        this.success = false; // Nascondi il messaggio di successo dopo 3 secondi
+                    }, 3000);
                 }
             })
-            
+            .finally(() => {
+                this.loading = false; // Imposta lo stato di caricamento su false dopo che l'operazione è completata (indipendentemente dall'esito)
+            });
         }
 
     },
@@ -76,7 +82,7 @@ export default {
 
         <hr>
 
-        <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
+        <div id="small-bg" class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px;">
 
             <figure class="col-3 d-flex align-items-center justify-content-center ">
                 <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg" alt="ProfilePicture">
@@ -144,6 +150,15 @@ export default {
                             </div>
                         </div>
 
+                        <div v-if="loading" class="loading-overlay">
+                            <div class="spinner"></div>
+                            <p>Caricamento in corso...</p>
+                        </div>
+
+                        <div id="success-message" v-if="success" class="alert alert-success mt-3" role="alert">
+                            Messaggio inviato con successo!
+                        </div>
+
 
                 </div>
             </div>
@@ -182,5 +197,35 @@ h1,h4 {
         opacity: 1;
     }
 }
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #333;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 </style>
