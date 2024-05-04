@@ -69,11 +69,11 @@ export default {
 
 <template>
 
-    <div class="d-white-bg pt-4 text-center">
-        <h3>Cerca i migliori medici:</h3>
+    <div class="d-green-bg pt-4 text-center">
+        <h3 class="s-yellow-color">Cerca i migliori medici:</h3>
+        <SelectSpecialization @performSearch="getDoctors" />
     </div>
 
-    <SelectSpecialization @performSearch="getDoctors" />
 
     <div class="d-white-bg">
         <div class="container">
