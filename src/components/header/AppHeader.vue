@@ -17,21 +17,21 @@ export default {
 
   <header class="py-5">
 
-    <div id="top" class="d-flex justify-content-end mx-auto align-items-start">
+      <div id="top" class="d-flex justify-content-between mx-auto align-items-center">
 
-      <div class="d-flex gap-3">
-        
-        <a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
+        <figure class="d-flex align-items-center">
+          <img src="../../img/lugano-health-logo-1.png" alt="">
+        </figure>
+          <a class="btn btn-success" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
       </div>
-    </div>
 
-    <div class="d-flex flex-column align-items-center mt-4">
-      <div class="text-white fs-3">CONTATTA I MIGLIORI MEDICI CON</div>
-      <h1 id="title" class="my-2 text-white">LUGANO HEALTH</h1>
-      <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
+      <div class="d-flex flex-column align-items-center mt-4 green-o rounded-3 w-75 mx-auto">
+        <div class="text-white fs-3">CONTATTA I MIGLIORI MEDICI CON</div>
+        <h1 id="title" class="my-2 s-yellow-color">LUGANO HEALTH</h1>
+        <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
 
-      <div class="button mt-5"><a class="bg-white px-3 rounded-2 btn pointer-event" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div>
-    </div>
+      </div>
+      <div class="button mt-5 text-center w-25 mx-auto"><a class="btn btn-success" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div>
 
   </header>
 
@@ -44,9 +44,10 @@ export default {
 
 header {
   background-color: $d-green;
-  background-image: url(../../img/lugano-health-logo-1.png);
-  background-position: -150px calc(100% + 200px);
-  background-repeat: no-repeat;
+  background-image: url(../../../public/carousel-2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
 
   #top {
     width: 80%;
@@ -76,18 +77,18 @@ header {
       font-size: 9em;
     }
 
-    .button {
-      border-radius: 10px;
-      border: 1px dashed white;
-      padding: 0.5em;
-      height: 100%;
+    
+    
+  }
+}
+.button {
+  border-radius: 10px;
+  border: 1px dashed white;
+  padding: 0.5em;
+  height: 100%;
 
-      a {
-        font-size: 1em;
-      }
-    }
-
-
+  a {
+    font-size: 1em;
   }
 }
 </style>

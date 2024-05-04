@@ -48,3 +48,9 @@ h2 {
 .d-green-bg{
     @include d-green-bg;
 }
+.s-yellow-color{
+    color: $s-yellow;
+}
+.green-o{
+    background-color: rgba(35, 61, 41, 0.9);
+}
