@@ -165,7 +165,7 @@ export default {
                 </div>
             </div>
         </div>
-    
+    </div>
 
     <div class="p-5 d-white-bg row">
         <div class="col-6 px-5">
