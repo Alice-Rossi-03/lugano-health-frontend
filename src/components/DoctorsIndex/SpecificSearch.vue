@@ -13,6 +13,10 @@ export default {
         }
     },
     methods: {
+        updateSelectedVote(vote) {
+            store.voteValue = vote;
+            this.$emit("voteChanged")
+        }
 
     },
     mounted() {
