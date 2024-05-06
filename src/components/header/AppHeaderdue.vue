@@ -19,7 +19,7 @@ export default {
     <nav id="top" class="rounded-4 px-5 mt-4 navbar navbar-expand-lg bg-body-tertiary border-0">
       
       <div class="container-fluid">
-        <a class="lugano-health" href="#">Lugano Health</a>
+        <a class="lugano-health" href="http://localhost:5174/">Lugano Health</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
