@@ -30,18 +30,30 @@ export default {
         },
         filterDoctorsByVoteAndReview() {
 
-            if (store.voteValue != null) {
+            console.log("Vote Value: ", store.voteValue)
+            console.log("Review Value: ", store.reviewNumberValue)
+
+            if (store.voteValue > 0 && store.reviewNumberValue != null) {
                 store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
-                    console.log(doctor)
-                    return doctor.voteRating >= store.voteValue;
+                    return doctor.voteRating >= store.voteValue && doctor.nRevs >= store.reviewNumberValue;
                 });
+            } else {
+                if (store.voteValue > 0) {
+                    store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                        console.log(doctor)
+                        return doctor.voteRating >= store.voteValue;
+                    });
+                }
+                
+                if (store.reviewNumberValue != null) {
+                    store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                        console.log("Lunghezza array rev: ", doctor.nRevs)
+                        return doctor.nRevs >= store.reviewNumberValue;
+                    });
+                }
             }
 
-            if (store.reviewNumberValue) {
-                store.filteredDoctors = store.filteredDoctors.filter(doctor => {
-                    return doctor.reviews.length >= store.reviewNumberValue;
-                });
-            }
+            
         },
         // al cambio del valore della select aggiorna il campo per il filtro
         // updateSelectedVote(vote) {
@@ -65,7 +77,7 @@ export default {
 
         <hr class="my-0">
 
-        <SpecificSearch @voteChanged="filterDoctorsByVoteAndReview"/>
+        <SpecificSearch @voteChanged="filterDoctorsByVoteAndReview" @reviewChanged="filterDoctorsByVoteAndReview" />
 
 
         <div class="row mt-0 d-white-bg rounded-4 p-4" style="height: 480px; width: auto;">
@@ -74,7 +86,7 @@ export default {
                 <h2 class="mb-2">Dottori Selezionati per {{ store.specializationValue ? store.specializationValue :
                     selectedSpec
                     }}</h2>
-                <h4 class="fs-6">Risultati: {{ store.filteredDoctors.length }}</h4>
+                <h4 class="fs-6">Risultati: {{ store.advancedfilteredDoctors.length }}</h4>
 
             </div>
 

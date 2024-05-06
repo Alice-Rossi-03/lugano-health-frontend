@@ -16,7 +16,14 @@ export default {
         updateSelectedVote(vote) {
             store.voteValue = vote;
             this.$emit("voteChanged")
+        },
+
+        updateSelectedReview(review){
+            store.updateSelectedReview = review;
+            this.$emit("reviewChanged")
         }
+
+
 
     },
     mounted() {
@@ -33,14 +40,14 @@ export default {
         <div class="col-3">
             <select name="voteSelect" id="voteSelect" class="form-select" v-model="store.voteValue"
                 @change="updateSelectedVote(store.voteValue)">
-                <option value="" disabled selected>Filtra per voto...</option>
+                <option value="0" selected>Nessun Voto</option>
                 <option :value="item.stars" v-for="(item, index) in store.votesArray" :key="item.id">{{ item.description
                     }}</option>
             </select>
         </div>
         <div class="col-3">
             <select name="reviewSelect" id="reviewSelect" class="form-select" v-model="store.reviewNumberValue"
-                @change="filterDoctorsByVoteAndReview()">
+                @change="updateSelectedReview(store.reviewNumberValue)">
                 <option value="" disabled selected>Filtra per recensioni...</option>
                 <option :value="index" v-for="(item, index) in 50" :key="index">{{ index }}</option>
             </select>

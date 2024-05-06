@@ -11,7 +11,7 @@ export const store = reactive({
     specializationValue: '',
 
     votesArray:[],
-    voteValue:'',
+    voteValue:'0',
 
     arrayAvgVotes:[],
     

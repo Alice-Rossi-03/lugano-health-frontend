@@ -36,7 +36,7 @@ export default {
 
                 axios.get(store.apiUrlSpecialization).then(response => {
                     store.filteredDoctors = response.data.doctors;
-                    store.advancedfilteredDoctors = store.filteredDoctors
+                    store.advancedfilteredDoctors = store.filteredDoctors;
                     console.log("Dottori: ", store.filteredDoctors)
                     console.log("Specializzazione selezionata: ", store.specializationValue)
                     console.log("Array media voti: ", response.data.avgVotes)
