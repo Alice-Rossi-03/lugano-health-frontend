@@ -20,30 +20,46 @@ export default {
         }
     },
     methods: {
+        // ottiene voti da stampare nella select
+
         getVotes() {
             axios.get(`${store.apiUrl}`).then(response => {
                 store.votesArray = response.data.votes;
-                console.log(store.votesArray);
+                console.log("Voti per select: ", store.votesArray);
             });
         },
         filterDoctorsByVoteAndReview() {
 
-            if (store.voteValue) {
-                store.filteredDoctors = store.doctorsArray.filter(doctor => {
-                    return doctor.vote === store.voteValue;
+            console.log("Vote Value: ", store.voteValue)
+            console.log("Review Value: ", store.reviewNumberValue)
+
+            if (store.voteValue > 0 && store.reviewNumberValue != null) {
+                store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                    return doctor.voteRating >= store.voteValue && doctor.nRevs >= store.reviewNumberValue;
                 });
+            } else {
+                if (store.voteValue > 0) {
+                    store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                        console.log(doctor)
+                        return doctor.voteRating >= store.voteValue;
+                    });
+                }
+                
+                if (store.reviewNumberValue != null) {
+                    store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                        console.log("Lunghezza array rev: ", doctor.nRevs)
+                        return doctor.nRevs >= store.reviewNumberValue;
+                    });
+                }
             }
 
-            if (store.reviewNumberValue) {
-                store.filteredDoctors = store.filteredDoctors.filter(doctor => {
-                    return doctor.reviews.length >= store.reviewNumberValue;
-                });
-            }
+            
         },
-        updateSelectedVote(vote) {
-            store.voteValue = vote;
-            this.filterDoctorsByVoteAndReview();
-        },
+        // al cambio del valore della select aggiorna il campo per il filtro
+        // updateSelectedVote(vote) {
+        //     store.voteValue = vote;
+        //     this.filterDoctorsByVoteAndReview();
+        // },
     },
     mounted() {
 
@@ -61,7 +77,7 @@ export default {
 
         <hr class="my-0">
 
-        <SpecificSearch />
+        <SpecificSearch @voteChanged="filterDoctorsByVoteAndReview" @reviewChanged="filterDoctorsByVoteAndReview" />
 
 
         <div class="row mt-0 d-white-bg rounded-4 p-4" style="height: 480px; width: auto;">
@@ -70,14 +86,14 @@ export default {
                 <h2 class="mb-2">Dottori Selezionati per {{ store.specializationValue ? store.specializationValue :
                     selectedSpec
                     }}</h2>
-                <h4 class="fs-6">Risultati: {{ store.filteredDoctors.length }}</h4>
+                <h4 class="fs-6">Risultati: {{ store.advancedfilteredDoctors.length }}</h4>
 
             </div>
 
             <div class="row">
 
                 <div class="col-9 d-flex flex-wrap gap-2 justify-content-center container-flex">
-                    <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
+                    <DoctorCard v-for="(item, index) in store.advancedfilteredDoctors" :propsElement="item" :key="item.id" />
                 </div>
             </div>
 

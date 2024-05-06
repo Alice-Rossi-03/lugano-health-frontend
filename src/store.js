@@ -11,11 +11,14 @@ export const store = reactive({
     specializationValue: '',
 
     votesArray:[],
-    voteValue:'',
+    voteValue:'0',
+
+    arrayAvgVotes:[],
     
     reviewNumberValue:'',
 
     filteredDoctors:[],
+    advancedfilteredDoctors:[],
     apiBase: 'http://127.0.0.1:8000/',
 })
 
