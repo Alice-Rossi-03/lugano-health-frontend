@@ -35,7 +35,8 @@ export default {
                 <div class="col-6">
                     
                     <figure class="col-3 d-flex align-items-center justify-content-center w-75 mb-2">
-                        <img class="img-fluid img-thumbnail rounded rounded-circle w-100" src="../../img/userpicture.jpg" alt="ProfilePicture">
+                        <img v-if="propsElement.ProfilePic!= null" class="img-fluid img-thumbnail rounded rounded-circle w-100" :src="`${store.apiBase}storage/${propsElement.ProfilePic}`" alt="title">
+                        <img v-else class="img-fluid img-thumbnail rounded rounded-circle w-100" src="../../img/userpicture.jpg" alt="ProfilePicture">
                     </figure>
 
                     <!-- <h2><RouterLink :to="{name: 'single-project', params:{slug: propsElement.slug}}" class="card-title text-warning">{{ propsElement.title }}</RouterLink></h2> -->
