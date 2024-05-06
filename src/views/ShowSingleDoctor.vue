@@ -25,6 +25,7 @@ export default {
             comment: '', //Reviews
 
             success: false,
+            successVote: false,
             errors: {},
             loading: false
         }
@@ -43,6 +44,33 @@ export default {
         },
         setRating(rating) {
             this.rating = rating;
+
+            const data = {
+                doctor_id: this.doctor[0]?.id,
+                vote_id: rating,
+            }
+
+            this.errors = {};
+            this.loading = true;
+
+
+            axios.post('http://127.0.0.1:8000/api/votes', data).then(res => {
+
+                this.successVote = res.data.success
+
+                if (!this.successVote) {
+                    this.errors = res.data.errors
+                    console.log(this.errors)
+                } else {
+                    this.rating = ''
+                    setTimeout(() => {
+                        this.successVote = false; 
+                    }, 3000);
+                }
+                })
+                .finally(() => {
+                    this.loading = false; 
+                });
         },
         sendMessage() {
             const data = {
@@ -214,6 +242,9 @@ export default {
                     <div id="success-message" v-if="success" class="alert alert-success mt-3" role="alert">
                         Messaggio inviato con successo!
                     </div>
+                    <div id="success-vote" v-if="successVote" class="alert alert-success mt-3" role="alert">
+                        Voto inserito con successo!
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,7 +258,7 @@ export default {
 
         <div class="col-6">
             <h4 class="text-center">RECENSIONI</h4>
-            <div class="mt-5 d-green-bg p-5 rounded-4 text-white text-center">{{ doctor[0]?.performances }}</div>
+            <div class="mt-5 d-green-bg p-5 rounded-4 text-white text-center">{{ doctor[0]?.reviews }}</div>
         </div>
     </div>
 </template>
