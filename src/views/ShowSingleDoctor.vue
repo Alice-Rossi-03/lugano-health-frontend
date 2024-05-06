@@ -21,6 +21,7 @@ export default {
             message: '', //Messaggi
 
             user_name: '', //Reviews
+            user_mail:'',//Reviews
             comment: '', //Reviews
 
             success: false,
@@ -77,6 +78,7 @@ export default {
             const reviewData = {
                 doctor_id: this.doctor[0]?.id,
                 user_name: this.user_name,
+                user_mail: this.user_mail,
                 comment: this.comment
             }
 
@@ -91,6 +93,7 @@ export default {
                     this.errors = res.data.errors
                 }else{
                     this.user_name = ''
+                    this.user_mail = ''
                     this.comment = ''
                     setTimeout(() => {
                         this.success = false; 
@@ -168,15 +171,17 @@ export default {
                     <!-- OPINION TEXT AREA -->
                     <div class="collapse collapse-horizontal" id="collapseReview">
                         <form @submit.prevent="submitReview()">
-                            <div class="">
-                                <input type="text" class="form-label border border-success rounded-2"
+                            <div class="d-flex justify-content-between">
+                                <input type="text" class="mb-1 border border-success rounded-2"
                                     placeholder="Il tuo nome" v-model="user_name">
-                                <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione"
-                                    id="floatingTextarea" style="height: 100px" v-model="comment"></textarea>
-                                <button class="btn btn-success mt-2" type="submit" >
-                                    INVIA RECENSIONE
-                                </button>
+                                <input type="email" class="mb-1 border border-success rounded-2"
+                                    placeholder="esempio@tuaMail.com" v-model="user_mail">
                             </div>
+                            <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione"
+                                id="floatingTextarea" style="height: 100px" v-model="comment"></textarea>
+                            <button class="btn btn-success mt-2" type="submit">
+                                INVIA RECENSIONE
+                            </button>
                         </form>
                     </div>
 
@@ -185,9 +190,9 @@ export default {
                         <div class="">
                             <form @submit.prevent="sendMessage()">
                                 <div class="d-flex justify-content-between">
-                                    <input type="text" class="form-label border border-success rounded-2"
+                                    <input type="text" class="mb-1 border border-success rounded-2"
                                         placeholder="Il tuo nome" v-model="name" required>
-                                    <input type="email" class="form-label border border-success rounded-2"
+                                    <input type="email" class="mb-1 border border-success rounded-2"
                                         id="exampleFormControlInput1" placeholder="esempio@tuaMail.com" v-model="email"
                                         required>
                                 </div>
