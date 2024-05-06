@@ -30,7 +30,6 @@ export default {
         },
         getDoctors() {
 
-            // console.log(store.specializationValue);
             if (store.specializationValue) {
                 
                 store.apiUrlSpecialization += `${store.specializationValue}`
@@ -47,16 +46,6 @@ export default {
                 })
             }
 
-            // store.apiUrlSpecialization += `${store.specializationValue}`
-            // axios.get(store.apiUrlSpecialization).then(response=>{
-            //     store.filteredDoctors = response.data.doctors;
-            //     console.log(store.filteredDoctors)
-            // })
-
-            // axios.get('http://127.0.0.1:8000/api/doctors/specialization/cardiologia').then(response=>{
-            //     store.filteredDoctors = response.data.doctors;
-            //     console.log(store.filteredDoctors)
-            // })
         },
 
     },
