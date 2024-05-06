@@ -153,7 +153,8 @@ export default {
         <div class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
 
             <figure class="col-3 d-flex align-items-center justify-content-center ">
-                <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg"
+                <img v-if="doctor[0]?.ProfilePic != null" class="img-fluid img-thumbnail rounded rounded-circle w-50" :src="`${store.apiBase}storage/${doctor[0]?.ProfilePic}`" alt="title">
+                <img v-else class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg"
                     alt="ProfilePicture">
             </figure>
 
@@ -258,7 +259,18 @@ export default {
 
         <div class="col-6">
             <h4 class="text-center">RECENSIONI</h4>
-            <div class="mt-5 d-green-bg p-5 rounded-4 text-white text-center">{{ doctor[0]?.reviews }}</div>
+            <div class="mt-5 d-green-bg p-5 rounded-4 text-white">
+                <div v-for="review in doctor[0]?.reviews" :key="review.id">
+                    <!-- {{ review }} -->
+                    <h5 class="d-inline">
+                        {{ review.user_name }} 
+                    </h5>
+                    scrive: <br>
+                    <span class="ms-5 bg-opacity-25 bg-white ">
+                        {{ review.comment }}
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </template>
