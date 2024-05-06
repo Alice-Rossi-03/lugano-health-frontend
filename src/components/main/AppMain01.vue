@@ -21,7 +21,7 @@ export default {
 
                 store.specializationsArray = response.data.specializations;
 
-                console.log(store.specializationsArray)
+                console.log("Elenco specializzazioni: ", store.specializationsArray)
                 console.log(store.specializationValue)
 
 
@@ -36,8 +36,12 @@ export default {
 
                 axios.get(store.apiUrlSpecialization).then(response => {
                     store.filteredDoctors = response.data.doctors;
-                    console.log(store.filteredDoctors)
-                    console.log(store.specializationValue)
+                    store.advancedfilteredDoctors = store.filteredDoctors
+                    console.log("Dottori: ", store.filteredDoctors)
+                    console.log("Specializzazione selezionata: ", store.specializationValue)
+                    console.log("Array media voti: ", response.data.avgVotes)
+
+                    store.arrayAvgVotes = response.data.avgVotes
 
                     window.localStorage.setItem("selectedSpecialization", store.specializationValue)
 

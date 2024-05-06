@@ -20,17 +20,20 @@ export default {
         }
     },
     methods: {
+        // ottiene voti da stampare nella select
+
         getVotes() {
             axios.get(`${store.apiUrl}`).then(response => {
                 store.votesArray = response.data.votes;
-                console.log(store.votesArray);
+                console.log("Voti per select: ", store.votesArray);
             });
         },
         filterDoctorsByVoteAndReview() {
 
-            if (store.voteValue) {
-                store.filteredDoctors = store.doctorsArray.filter(doctor => {
-                    return doctor.vote === store.voteValue;
+            if (store.voteValue != null) {
+                store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                    console.log(doctor)
+                    return doctor.voteRating >= store.voteValue;
                 });
             }
 
@@ -40,10 +43,11 @@ export default {
                 });
             }
         },
-        updateSelectedVote(vote) {
-            store.voteValue = vote;
-            this.filterDoctorsByVoteAndReview();
-        },
+        // al cambio del valore della select aggiorna il campo per il filtro
+        // updateSelectedVote(vote) {
+        //     store.voteValue = vote;
+        //     this.filterDoctorsByVoteAndReview();
+        // },
     },
     mounted() {
 
@@ -61,7 +65,7 @@ export default {
 
         <hr class="my-0">
 
-        <SpecificSearch />
+        <SpecificSearch @voteChanged="filterDoctorsByVoteAndReview"/>
 
 
         <div class="row mt-0 d-white-bg rounded-4 p-4" style="height: 480px; width: auto;">
@@ -77,7 +81,7 @@ export default {
             <div class="row">
 
                 <div class="col-9 d-flex flex-wrap gap-2 justify-content-center container-flex">
-                    <DoctorCard v-for="(item, index) in store.filteredDoctors" :propsElement="item" :key="item.id" />
+                    <DoctorCard v-for="(item, index) in store.advancedfilteredDoctors" :propsElement="item" :key="item.id" />
                 </div>
             </div>
 
