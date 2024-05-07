@@ -25,6 +25,7 @@ export default {
             comment: '', //Reviews
 
             success: false,
+            successVote: false,
             errors: {},
             loading: false
         }
@@ -43,6 +44,33 @@ export default {
         },
         setRating(rating) {
             this.rating = rating;
+
+            const data = {
+                doctor_id: this.doctor[0]?.id,
+                vote_id: rating,
+            }
+
+            this.errors = {};
+            this.loading = true;
+
+
+            axios.post('http://127.0.0.1:8000/api/votes', data).then(res => {
+
+                this.successVote = res.data.success
+
+                if (!this.successVote) {
+                    this.errors = res.data.errors
+                    console.log(this.errors)
+                } else {
+                    this.rating = ''
+                    setTimeout(() => {
+                        this.successVote = false; 
+                    }, 3000);
+                }
+                })
+                .finally(() => {
+                    this.loading = false; 
+                });
         },
         sendMessage() {
             const data = {
@@ -125,7 +153,8 @@ export default {
         <div class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
 
             <figure class="col-3 d-flex align-items-center justify-content-center ">
-                <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg"
+                <img v-if="doctor[0]?.ProfilePic != null" class="img-fluid img-thumbnail rounded rounded-circle w-50" :src="`${store.apiBase}storage/${doctor[0]?.ProfilePic}`" alt="title">
+                <img v-else class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg"
                     alt="ProfilePicture">
             </figure>
 
@@ -214,6 +243,9 @@ export default {
                     <div id="success-message" v-if="success" class="alert alert-success mt-3" role="alert">
                         Messaggio inviato con successo!
                     </div>
+                    <div id="success-vote" v-if="successVote" class="alert alert-success mt-3" role="alert">
+                        Voto inserito con successo!
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,7 +259,18 @@ export default {
 
         <div class="col-6">
             <h4 class="text-center">RECENSIONI</h4>
-            <div class="mt-5 d-green-bg p-5 rounded-4 text-white text-center">{{ doctor[0]?.performances }}</div>
+            <div class="mt-5 d-green-bg p-5 rounded-4 text-white">
+                <div v-for="review in doctor[0]?.reviews" :key="review.id">
+                    <!-- {{ review }} -->
+                    <h5 class="d-inline">
+                        {{ review.user_name }} 
+                    </h5>
+                    scrive: <br>
+                    <span class="ms-5 bg-opacity-25 bg-white ">
+                        {{ review.comment }}
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </template>
