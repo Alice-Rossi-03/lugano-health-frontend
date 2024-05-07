@@ -2,11 +2,13 @@
 import axios from 'axios';
 import { store } from '@/store';
 import SelectSpecialization from './SelectSpecialization.vue';
+import ReviewMain from './ReviewMain.vue';
 
 export default {
     name: "AppMain01",
     components: {
         SelectSpecialization,
+        ReviewMain
     },
     data() {
         return {
@@ -30,8 +32,9 @@ export default {
         },
         getDoctors() {
 
-            if (store.specializationValue) {
+            if (store.specializationValue != "") {
                 
+                console.log("primo if")
                 store.apiUrlSpecialization += `${store.specializationValue}`
 
                 axios.get(store.apiUrlSpecialization).then(response => {
@@ -48,6 +51,30 @@ export default {
                     store.apiUrlSpecialization = 'http://127.0.0.1:8000/api/doctors/specialization/';
 
                 })
+            } else {
+                axios.get(store.apiUrlHomepage).then(response => {
+
+                    console.log("secondo")
+                    store.filteredDoctors = response.data.doctors;
+                    let ora = new Date();
+
+                    store.advancedfilteredDoctors = store.filteredDoctors.filter(doctor => {
+                        console.log(doctor)
+
+                        if(doctor.deadline != null){
+                            let deadlineString = doctor.deadline;
+                            let parts = deadlineString.split(/[- :]/);
+                            let endSponsor = new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+                            console.log(endSponsor)
+                            return endSponsor >= ora;
+                        }
+
+                        return false;
+                    });
+
+                    console.log(store.advancedfilteredDoctors)
+
+                })
             }
 
         },
@@ -55,6 +82,7 @@ export default {
     },
     mounted() {
         this.getSpecialization()
+        this.getDoctors()
     }
 };
 
@@ -122,6 +150,8 @@ export default {
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
+    <ReviewMain :doctors="store.advancedfilteredDoctors"/>
 
 </template>
 
