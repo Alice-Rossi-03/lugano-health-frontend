@@ -80,7 +80,7 @@ export default {
         <SpecificSearch @voteChanged="filterDoctorsByVoteAndReview" @reviewChanged="filterDoctorsByVoteAndReview" />
 
 
-        <div class="row mt-0 d-white-bg rounded-4 p-4" style="height: 480px; width: auto;">
+        <div class="row mt-0 d-white-bg rounded-4 p-4 overflow-auto" style="height: 480px; width: auto;">
 
             <div class="text-center">
                 <h2 class="mb-2">Dottori Selezionati per {{ store.specializationValue ? store.specializationValue :
@@ -92,7 +92,7 @@ export default {
 
             <div class="row">
 
-                <div class="col-9 d-flex flex-wrap gap-2 justify-content-center container-flex">
+                <div class="d-flex flex-wrap gap-2 justify-content-center container-flex py-4">
                     <DoctorCard v-for="(item, index) in store.advancedfilteredDoctors" :propsElement="item" :key="item.id" />
                 </div>
             </div>
