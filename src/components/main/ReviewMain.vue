@@ -4,6 +4,9 @@ import { store } from '@/store';
 
 export default {
     name: "ReviewMain",
+    props: [
+        'doctors'
+    ],
     data() {
         return {
             store
@@ -17,50 +20,26 @@ export default {
 
     <div class="d-white-bg">
         <div class="container">
-            <h2 class="text-uppercase mb-4">le recensioni dei nostri pazienti</h2>
+            <h2 class="text-uppercase mb-4">I dottori che vi consigliamo</h2>
 
             <div class="row">
 
-                <div class="col-4">
+                <div v-for="doctor in doctors" :key="doctor.id" class="col-4">
                     <!-- CARD DA CICLARE SUCCESSIVAMENTE -->
                     <div class="card pb-5 pt-4 px-5">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>Nome Cognome Paziente</h5>
+                            <h5>{{ doctor.name }}</h5>
                             <figure class="" style="width: 100px;">
-                                <img class="img-fluid" src="../../img/userpicture.jpg" alt="">
+                                <img v-if="doctor.ProfilePic != null"
+                                class="img-fluid img-thumbnail rounded rounded-circle w-100"
+                                :src="`${store.apiBase}storage/${doctor.ProfilePic}`" alt="title">
+                                <img v-else class="img-fluid img-thumbnail rounded rounded-circle w-100"
+                                src="../../img/userpicture.jpg" alt="ProfilePicture">
                             </figure>
                         </div>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil amet necessitatibus totam in accusantium? Hic, optio voluptate! Nam, quasi ad porro recusandae consectetur eaque magnam iusto distinctio. Quasi, alias deleniti.</p>
+                        <p>{{ doctor.performances }}</p>
                     </div>
                 </div>
-
-                <div class="col-4">
-                    <!-- CARD DA CICLARE SUCCESSIVAMENTE -->
-                    <div class="card pb-5 pt-4 px-5">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>Nome Cognome Paziente</h5>
-                            <figure class="" style="width: 100px;">
-                                <img class="img-fluid" src="../../img/userpicture.jpg" alt="">
-                            </figure>
-                        </div>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil amet necessitatibus totam in accusantium? Hic, optio voluptate! Nam, quasi ad porro recusandae consectetur eaque magnam iusto distinctio. Quasi, alias deleniti.</p>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <!-- CARD DA CICLARE SUCCESSIVAMENTE -->
-                    <div class="card pb-5 pt-4 px-5">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>Nome Cognome Paziente</h5>
-                            <figure class="" style="width: 100px;">
-                                <img class="img-fluid" src="../../img/userpicture.jpg" alt="">
-                            </figure>
-                        </div>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil amet necessitatibus totam in accusantium? Hic, optio voluptate! Nam, quasi ad porro recusandae consectetur eaque magnam iusto distinctio. Quasi, alias deleniti.</p>
-                    </div>
-                </div>
-
-
             </div>
         </div>
     </div>
