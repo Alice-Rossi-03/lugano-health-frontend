@@ -2,12 +2,14 @@
 import { store } from '@/store';
 import axios from 'axios';
 import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
+import Footer from '@/components/footer/Footer.vue';
 
 
 export default {
     name: 'ShowSingleDoctor',
     components: {
         AppHeaderdue,
+        Footer,
     },
     data() {
         return {
@@ -15,17 +17,18 @@ export default {
             doctor: [],
             rating: 0,
             hoverRating: 0,
-            
+
 
             name: '', //Messaggi
             email: '', //Messaggi
             message: '', //Messaggi
 
             user_name: '', //Reviews
-            user_mail:'',//Reviews
+            user_mail: '',//Reviews
             comment: '', //Reviews
 
-            success: false,
+            successMessage: false,
+            successReview: false,
             successVote: false,
             errors: {},
             loading: false
@@ -65,12 +68,12 @@ export default {
                 } else {
                     this.rating = ''
                     setTimeout(() => {
-                        this.successVote = false; 
+                        this.successVote = false;
                     }, 3000);
                 }
-                })
+            })
                 .finally(() => {
-                    this.loading = false; 
+                    this.loading = false;
                 });
         },
         sendMessage() {
@@ -86,24 +89,24 @@ export default {
 
             axios.post('http://127.0.0.1:8000/api/messages', data).then(res => {
 
-                this.success = res.data.success
+                this.successMessage = res.data.success
 
-                if (!this.success) {
+                if (!this.successMessage) {
                     this.errors = res.data.errors
                 } else {
                     this.name = ''
                     this.email = ''
                     this.message = ''
                     setTimeout(() => {
-                        this.success = false; 
+                        this.successMessage = false;
                     }, 3000);
                 }
             })
                 .finally(() => {
-                    this.loading = false; 
+                    this.loading = false;
                 });
         },
-        submitReview(){
+        submitReview() {
             const reviewData = {
                 doctor_id: this.doctor[0]?.id,
                 user_name: this.user_name,
@@ -116,22 +119,22 @@ export default {
 
             axios.post('http://127.0.0.1:8000/api/reviews', reviewData).then(res => {
 
-                this.success = res.data.success
+                this.successReview = res.data.success
 
-                if(!this.success){
+                if (!this.successReview) {
                     this.errors = res.data.errors
-                }else{
+                } else {
                     this.user_name = ''
                     this.user_mail = ''
                     this.comment = ''
                     setTimeout(() => {
-                        this.success = false; 
+                        this.successReview = false;
                     }, 3000);
                 }
             })
-            .finally(() => {
-                this.loading = false; 
-            });
+                .finally(() => {
+                    this.loading = false;
+                });
         }
 
     },
@@ -154,7 +157,8 @@ export default {
         <div class="row mt-5 d-white-bg rounded-4 p-5" style="height: 480px">
 
             <figure class="col-3 d-flex align-items-center justify-content-center ">
-                <img v-if="doctor[0]?.ProfilePic != null" class="img-fluid img-thumbnail rounded rounded-circle w-50" :src="`${store.apiBase}storage/${doctor[0]?.ProfilePic}`" alt="title">
+                <img v-if="doctor[0]?.ProfilePic != null" class="img-fluid img-thumbnail rounded rounded-circle w-50"
+                    :src="`${store.apiBase}storage/${doctor[0]?.ProfilePic}`" alt="title">
                 <img v-else class="img-fluid img-thumbnail rounded rounded-circle w-50" src="../img/userpicture.jpg"
                     alt="ProfilePicture">
             </figure>
@@ -172,10 +176,10 @@ export default {
                     <div>
                         <h5>Dai un voto:</h5>
                         <svg v-for="star in 5" :key="star" @click="setRating(star)" @mouseover="hoverRating = star"
-                        @mouseleave="hoverRating = 0" width="25px" height="25px" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 576 512">
-                        <path :fill="star <= (hoverRating || rating) ? 'gold' : 'gray'"
-                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
+                            @mouseleave="hoverRating = 0" width="25px" height="25px" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 576 512">
+                            <path :fill="star <= (hoverRating || rating) ? 'gold' : 'gray'"
+                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                         </svg>
                     </div>
 
@@ -204,12 +208,12 @@ export default {
                         <form @submit.prevent="submitReview()">
                             <div class="d-flex justify-content-between">
                                 <input type="text" class="mb-1 border border-success rounded-2"
-                                    placeholder="Il tuo nome" v-model="user_name">
+                                    placeholder="Il tuo nome" v-model="user_name" required>
                                 <input type="email" class="mb-1 border border-success rounded-2"
-                                    placeholder="esempio@tuaMail.com" v-model="user_mail">
+                                    placeholder="esempio@tuaMail.com" v-model="user_mail" required>
                             </div>
                             <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione"
-                                id="floatingTextarea" style="height: 100px" v-model="comment"></textarea>
+                                id="floatingTextarea" style="height: 100px" v-model="comment" required></textarea>
                             <button class="btn btn-success mt-2" type="submit">
                                 INVIA RECENSIONE
                             </button>
@@ -242,9 +246,14 @@ export default {
                         <p>Caricamento in corso...</p>
                     </div>
 
-                    <div id="success-message" v-if="success" class="alert alert-success mt-3" role="alert">
+                    <div id="success-message" v-if="successMessage" class="alert alert-success mt-3" role="alert">
                         Messaggio inviato con successo!
                     </div>
+
+                    <div id="success-message" v-if="successReview" class="alert alert-success mt-3" role="alert">
+                        Recensione inviata con successo!
+                    </div>
+
                     <div id="success-vote" v-if="successVote" class="alert alert-success mt-3" role="alert">
                         Voto inserito con successo!
                     </div>
@@ -265,7 +274,7 @@ export default {
                 <div v-for="review in doctor[0]?.reviews" :key="review.id">
                     <!-- {{ review }} -->
                     <h5 class="d-inline">
-                        {{ review.user_name }} 
+                        {{ review.user_name }}
                     </h5>
                     scrive: <br>
                     <span class="ms-5 bg-opacity-25 bg-white ">
@@ -275,6 +284,8 @@ export default {
             </div>
         </div>
     </div>
+
+    <Footer />
 </template>
 
 <style lang="scss" scoped>
