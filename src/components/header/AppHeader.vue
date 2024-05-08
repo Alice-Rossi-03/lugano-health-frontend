@@ -22,7 +22,9 @@ export default {
         <figure class="d-flex align-items-center">
           <img src="../../img/lugano-health-logo-1.png" alt="">
         </figure>
+        <div class="button p-2">
           <a class="btn btn-success" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
+        </div>
       </div>
 
       <div class="d-flex flex-column align-items-center mt-4 green-o rounded-5 w-75 mx-auto p-5">
@@ -31,7 +33,11 @@ export default {
         <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
 
       </div>
-      <div class="button mt-5 text-center w-25 mx-auto"><a class="btn btn-success" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div>
+      <!-- <div class="button mt-5 text-center p-2 w-auto"><a class="btn btn-success" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div> -->
+
+      <div class="d-flex justify-content-center mt-5">
+        <div class="button p-2"><a class="btn btn-success" :href="`${store.registerUrl}`">REGISTRATI COME MEDICO</a></div>
+      </div>
 
   </header>
 
@@ -43,7 +49,7 @@ export default {
 @use '../styles/general.scss';
 
 header {
-  background-color: $d-green;
+  // background-color: $d-green;
   background-image: url(../../../public/carousel-2.jpg);
   background-position: center;
   background-size: cover;
@@ -83,9 +89,8 @@ header {
 }
 .button {
   border-radius: 10px;
-  border: 1px dashed white;
-  padding: 0.5em;
-  height: 100%;
+  border: 2px solid white;
+  // height: 100%;
 
   a {
     font-size: 1em;
