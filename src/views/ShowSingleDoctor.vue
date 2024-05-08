@@ -26,6 +26,8 @@ export default {
             user_mail: '',//Reviews
             comment: '', //Reviews
 
+            reviews:[],
+
             successMessage: false,
             successReview: false,
             successVote: false,
@@ -39,6 +41,20 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/doctors/${this.$route.params.slug}`).then(response => {
                 if (response.data.success) {
                     this.doctor = response.data.doctor
+                    this.reviews = this.doctor[0].reviews
+                    this.reviews.reverse()
+                    console.log(this.reviews)
+                    for(let i=0; i<this.reviews.length; i++){
+                        let newDate = []
+                        for(let j=0; j<10; j++){
+                            newDate[j]=this.reviews[i].created_at[j]
+                        }
+                        let year = `${newDate[0]}${newDate[1]}${newDate[2]}${newDate[3]}`
+                        let month = newDate[5]+newDate[6]
+                        let day = newDate[8]+newDate[9]
+                        newDate = `${day}/${month}/${year}`
+                        this.reviews[i].created_at = newDate
+                    }
                 } else {
                     this.$router.push({ name: 'not-found' })
                 }
@@ -134,8 +150,7 @@ export default {
                 .finally(() => {
                     this.loading = false;
                 });
-        }
-
+        },
     },
     mounted() {
         this.getSingleDoctor()
@@ -271,7 +286,7 @@ export default {
         <div class="col-6">
             <h4 class="text-center">RECENSIONI</h4>
             <div class="mt-5 d-green-bg p-5 rounded-4 text-white">
-                <div v-for="review in doctor[0]?.reviews" :key="review.id">
+                <div v-for="review in doctor[0]?.reviews" :key="review.id" class="position-relative mt-2 ">
                     <!-- {{ review }} -->
                     <h5 class="d-inline">
                         {{ review.user_name }}
@@ -280,6 +295,11 @@ export default {
                     <span class="ms-5 bg-opacity-25 bg-white ">
                         {{ review.comment }}
                     </span>
+                    <span class="position-absolute top-0 end-0">
+                        {{ review.created_at }}
+                    </span>
+
+
                 </div>
             </div>
         </div>
