@@ -5,13 +5,15 @@ import DoctorCard from './DoctorCard.vue';
 import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
 import axios from 'axios';
 import SpecificSearch from './SpecificSearch.vue';
+import Footer from '@/components/footer/Footer.vue';
 
 
 export default {
     components: {
         DoctorCard,
         AppHeaderdue,
-        SpecificSearch
+        SpecificSearch,
+        Footer,
     },
     data() {
         return {
@@ -109,6 +111,8 @@ export default {
             </svg>
         </div>
     </div>
+
+    <Footer/>
 
 </template>
 

@@ -111,13 +111,13 @@ export default {
 
 <template>
 
-    <div class="d-green-bg pt-4 text-center">
+    <div class="d-green-bg py-4 pt-5 text-center">
         <h3 class="s-yellow-color">Cerca i migliori medici:</h3>
         <SelectSpecialization @performSearch="getDoctors" />
     </div>
 
 
-    <div class="d-white-bg">
+    <div class="d-white-bg py-5">
         <div>
 
             <h2 class="text-uppercase">trova un professionista sanitario per te ed i tuoi familiari</h2>
@@ -169,7 +169,7 @@ export default {
     </div>
 
     <!-- CAROUSEL -->
-    <div id="carouselExampleRide" class="carousel slide mt-5 " data-bs-ride="true">
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
             <!-- Ho aggiunto un ciclo v-for per iterare sul tuo array di immagini -->
             <div v-for="(image, index) in images" :key="index" :class="{ 'carousel-item': true, active: index === 0 }">

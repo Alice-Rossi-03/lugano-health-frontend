@@ -26,28 +26,27 @@ export default {
 </script>
 
 <template>
-
     <div class="">
-        <div class="container d-flex justify-content-evenly ">
+        <div class="container">
 
-            <label for="selectSpecialization" class="form-label"></label>
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-4">
+                <!-- select box -->
+                <select name="selectSpecialization" id="selectSpecialization" class="form-select w-75"
+                    v-model="store.specializationValue">
+                    <option value="" disabled>Seleziona una specializzazione...</option>
+                    <option :value="item.slug" v-for="(item, index) in store.specializationsArray" :key="item.id">
+                        {{ item.name }}</option>
+                </select>
 
-            <select name="selectSpecialization" id="selectSpecialization" class="form-select w-75"
-                v-model="store.specializationValue" >
-                <option value="" disabled>Seleziona una specializzazione...</option>
-                <option :value="item.slug" v-for="(item, index) in store.specializationsArray" :key="item.id">{{
-                    item.name }}</option>
-            </select>
-
-
-
-            <RouterLink class="btn btn-light" :to="{ name: 'getDoctors' }"  :class="store.specializationValue?'':'disabled'"  @click.prevent="$emit('performSearch')">Trova dottori</RouterLink>
-
-
+                <!-- Pulsante per la ricerca -->
+                <RouterLink class="btn btn-light" :to="{ name: 'getDoctors' }"
+                    :class="store.specializationValue ? '' : 'disabled'" @click.prevent="$emit('performSearch')">Trova
+                    dottori</RouterLink>
+            </div>
         </div>
     </div>
-
 </template>
+
 
 <style lang="scss" scoped>
 @use '../styles/partials/mixins' as *;
