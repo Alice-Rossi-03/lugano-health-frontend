@@ -49,6 +49,6 @@ export default {
     border-radius: 1em;
     min-height: 20rem;
     max-height: 20rem;
-    width: 18rem;
+    width: calc(18rem - 1em);
 }
 </style>

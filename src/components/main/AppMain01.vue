@@ -173,7 +173,7 @@ export default {
 
             <div class="d-flex">
 
-                <div id="carouselDoctors" class="carousel-container">
+                <div id="carouselDoctors" class="carousel-container justify-content-center">
                     <ReviewMain :doctors="store.advancedfilteredDoctors"/>
                 </div>
             </div>
