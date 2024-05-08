@@ -25,7 +25,7 @@ export default {
           <a class="btn btn-success" :href="`${store.loginUrl}`">ACCEDI ALL'AREA MEDICI</a>
       </div>
 
-      <div class="d-flex flex-column align-items-center mt-4 green-o rounded-3 w-75 mx-auto">
+      <div class="d-flex flex-column align-items-center mt-4 green-o rounded-5 w-75 mx-auto p-5">
         <div class="text-white fs-3">CONTATTA I MIGLIORI MEDICI CON</div>
         <h1 id="title" class="my-2 s-yellow-color">LUGANO HEALTH</h1>
         <div class="text-white fs-1">"La salute è la nostra priorità assoluta."</div>
