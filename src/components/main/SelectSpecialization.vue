@@ -26,14 +26,12 @@ export default {
 </script>
 
 <template>
-    <div class="d-white-bg py-4">
+    <div class="">
         <div class="container">
-            <h2>Cerca i migliori medici:</h2>
 
-            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-                <!-- Etichetta e select box -->
-                <label for="selectSpecialization" class="form-label">Specializzazione:</label>
-                <select name="selectSpecialization" id="selectSpecialization" class="form-select w-100 w-lg-75"
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-4">
+                <!-- select box -->
+                <select name="selectSpecialization" id="selectSpecialization" class="form-select w-75"
                     v-model="store.specializationValue">
                     <option value="" disabled>Seleziona una specializzazione...</option>
                     <option :value="item.slug" v-for="(item, index) in store.specializationsArray" :key="item.id">
@@ -41,7 +39,7 @@ export default {
                 </select>
 
                 <!-- Pulsante per la ricerca -->
-                <RouterLink class="btn btn-light mt-3 mt-lg-0" :to="{ name: 'getDoctors' }"
+                <RouterLink class="btn btn-light" :to="{ name: 'getDoctors' }"
                     :class="store.specializationValue ? '' : 'disabled'" @click.prevent="$emit('performSearch')">Trova
                     dottori</RouterLink>
             </div>
