@@ -169,7 +169,7 @@ export default {
     </div>
 
     <!-- CAROUSEL -->
-    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+    <div id="carouselExampleRide" class="carousel slide mt-5 " data-bs-ride="true">
         <div class="carousel-inner">
             <!-- Ho aggiunto un ciclo v-for per iterare sul tuo array di immagini -->
             <div v-for="(image, index) in images" :key="index" :class="{ 'carousel-item': true, active: index === 0 }">
