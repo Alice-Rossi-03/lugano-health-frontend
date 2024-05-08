@@ -2,12 +2,14 @@
 import { store } from '@/store';
 import axios from 'axios';
 import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
+import Footer from '@/components/footer/Footer.vue'; 
 
 
 export default {
     name: 'ShowSingleDoctor',
     components: {
         AppHeaderdue,
+        Footer,
     },
     data() {
         return {
@@ -25,7 +27,8 @@ export default {
             user_mail:'',//Reviews
             comment: '', //Reviews
 
-            success: false,
+            successMessage: false,
+            successReview: false,
             successVote: false,
             errors: {},
             loading: false
@@ -86,16 +89,16 @@ export default {
 
             axios.post('http://127.0.0.1:8000/api/messages', data).then(res => {
 
-                this.success = res.data.success
+                this.successMessage = res.data.success
 
-                if (!this.success) {
+                if (!this.successMessage) {
                     this.errors = res.data.errors
                 } else {
                     this.name = ''
                     this.email = ''
                     this.message = ''
                     setTimeout(() => {
-                        this.success = false; 
+                        this.successMessage = false; 
                     }, 3000);
                 }
             })
@@ -116,16 +119,16 @@ export default {
 
             axios.post('http://127.0.0.1:8000/api/reviews', reviewData).then(res => {
 
-                this.success = res.data.success
+                this.successReview = res.data.success
 
-                if(!this.success){
+                if(!this.successReview){
                     this.errors = res.data.errors
                 }else{
                     this.user_name = ''
                     this.user_mail = ''
                     this.comment = ''
                     setTimeout(() => {
-                        this.success = false; 
+                        this.successReview = false; 
                     }, 3000);
                 }
             })
@@ -243,7 +246,7 @@ export default {
                     </div>
 
                     <div id="success-message" v-if="success" class="alert alert-success mt-3" role="alert">
-                        Messaggio inviato con successo!
+                        Inviato con successo!
                     </div>
                     <div id="success-vote" v-if="successVote" class="alert alert-success mt-3" role="alert">
                         Voto inserito con successo!
@@ -275,6 +278,8 @@ export default {
             </div>
         </div>
     </div>
+
+    <Footer/>
 </template>
 
 <style lang="scss" scoped>
