@@ -24,7 +24,6 @@ export default {
 <template>
   <AppHeader/>
   <AppMain01/>
-  <ReviewMain/>
   <Footer/>
 </template>
 

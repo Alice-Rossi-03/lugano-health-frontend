@@ -46,11 +46,7 @@ export default {
             </select>
         </div>
         <div class="col-3">
-            <select name="reviewSelect" id="reviewSelect" class="form-select" v-model="store.reviewNumberValue"
-                @change="updateSelectedReview(store.reviewNumberValue)">
-                <option value="" disabled selected>Filtra per recensioni...</option>
-                <option :value="index" v-for="(item, index) in 50" :key="index">{{ index }}</option>
-            </select>
+            <input type="number" min="0" name="reviewSelect" id="reviewSelect" class="form-control" placeholder="Numero minimo di recensioni..." v-model="store.reviewNumberValue" @change="updateSelectedReview(store.reviewNumberValue)">
         </div>
 
         <!-- <div class="col-2">
