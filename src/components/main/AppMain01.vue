@@ -79,30 +79,10 @@ export default {
             }
 
         },
-        autoScroll() {
-            const slider = document.getElementById('carouselDoctors')
-            let amount = slider.offsetWidth / 3
-            this.position++
-            if (this.position > 5) {
-                this.position = 0
-                slider.scrollLeft = 0
-            }
-            return setInterval(() => {
-                slider.scrollBy({
-                    left: amount,
-                    behavior: 'smooth'
-                });
-            }, 3000);
-        },
-        stopScroll() {
-            clearInterval(this.autoScroll())
-        }
-
     },
     mounted() {
         this.getSpecialization()
         this.getDoctors()
-        this.autoScroll()
 
     },
 };
@@ -193,9 +173,8 @@ export default {
 
             <div class="d-flex">
 
-                <div id="carouselDoctors" class="carousel-container" @mouseover="stopScroll()"
-                    @mouseleave="autoScroll()">
-                    <ReviewMain :doctors="store.advancedfilteredDoctors" />
+                <div id="carouselDoctors" class="carousel-container">
+                    <ReviewMain :doctors="store.advancedfilteredDoctors"/>
                 </div>
             </div>
 
@@ -220,10 +199,8 @@ h3 {
 .carousel-container {
     display: flex;
     gap: 1em;
-    overflow-x: scroll;
-}
-
-.carousel-container::-webkit-scrollbar {
-    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
 }
 </style>
