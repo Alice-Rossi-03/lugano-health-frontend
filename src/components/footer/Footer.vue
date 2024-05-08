@@ -112,12 +112,12 @@ export default {
     </div>
 
     <div class="d-flex flex-column align-items-center">
-            <h4 class="text-center">
-                “Dove c’è amore per l’umanità, <br>
-                c’è anche amore per l’arte della medicina.”
-            </h4>
-            <p class="text-white mt-2">-Paracelso</p>
-        </div>
+        <h4 class="text-center">
+            “Dove c’è amore per l’umanità, <br>
+            c’è anche amore per l’arte della medicina.”
+        </h4>
+        <p class="text-white mt-2">-Paracelso</p>
+    </div>
 </div>
    
 </template>
