@@ -170,6 +170,7 @@ export default {
 
                     <!-- STARS -->
                     <div>
+                        <h5>Dai un voto:</h5>
                         <svg v-for="star in 5" :key="star" @click="setRating(star)" @mouseover="hoverRating = star"
                         @mouseleave="hoverRating = 0" width="25px" height="25px" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512">
