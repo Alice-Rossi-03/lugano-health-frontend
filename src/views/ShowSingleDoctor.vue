@@ -4,7 +4,6 @@ import axios from 'axios';
 import AppHeaderdue from '@/components/header/AppHeaderdue.vue';
 import Footer from '@/components/footer/Footer.vue';
 
-
 export default {
     name: 'ShowSingleDoctor',
     components: {
@@ -140,6 +139,7 @@ export default {
     },
     mounted() {
         this.getSingleDoctor()
+
     }
 }
 
@@ -173,8 +173,8 @@ export default {
                     <p class="mt-2">{{ doctor[0]?.address }}</p>
 
                     <!-- STARS -->
-                    <div>
-                        <h5>Dai un voto:</h5>
+                    <div class="mt-3">
+                        <h4>Dai un voto:</h4>
                         <svg v-for="star in 5" :key="star" @click="setRating(star)" @mouseover="hoverRating = star"
                             @mouseleave="hoverRating = 0" width="25px" height="25px" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 576 512">
@@ -336,5 +336,9 @@ h4 {
     to {
         transform: rotate(360deg);
     }
+}
+
+h5 {
+    color: $l-green;
 }
 </style>
