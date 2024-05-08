@@ -204,12 +204,12 @@ export default {
                         <form @submit.prevent="submitReview()">
                             <div class="d-flex justify-content-between">
                                 <input type="text" class="mb-1 border border-success rounded-2"
-                                    placeholder="Il tuo nome" v-model="user_name">
+                                    placeholder="Il tuo nome" v-model="user_name" required>
                                 <input type="email" class="mb-1 border border-success rounded-2"
-                                    placeholder="esempio@tuaMail.com" v-model="user_mail">
+                                    placeholder="esempio@tuaMail.com" v-model="user_mail" required>
                             </div>
                             <textarea class="form-control border border-success" placeholder="Scrivi la tua recensione"
-                                id="floatingTextarea" style="height: 100px" v-model="comment"></textarea>
+                                id="floatingTextarea" style="height: 100px" v-model="comment" required></textarea>
                             <button class="btn btn-success mt-2" type="submit">
                                 INVIA RECENSIONE
                             </button>
